@@ -7,8 +7,31 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import sys
+import smtplibaio
 class Ui_loginwindow(object):
+    def logincheck(self):
+        passget = self.pass1.text()
+        userget=self.user.text()
+        server = smtplibaio.SMTP_SSL('smtp.gmail.com', 587)
+        server.ehlo()
+        server.starttls()
+        try:
+            server.login(userget, passget)
+        except:
+           print("error")
+           self.msg=QtWidgets.QMessageBox(loginwindow)
+           self.msg.setIcon(self,"critical")
+           self.msg.setText("Invalid Credentials")
+           self.msg.setWindowTitle("Error in Login")
+           self.msg.show()
+
+
+
+    def resetcheck(self):
+        self.pass1.setText("")
+        self.user.setText("")
+
     def setupUi(self, loginwindow):
         loginwindow.setObjectName("loginwindow")
         loginwindow.resize(719, 392)
@@ -42,27 +65,33 @@ class Ui_loginwindow(object):
         self.login = QtWidgets.QPushButton(loginwindow)
         self.login.setGeometry(QtCore.QRect(350, 310, 75, 23))
         self.login.setObjectName("login")
+        self.login.clicked.connect(self.logincheck)
         self.reset = QtWidgets.QPushButton(loginwindow)
         self.reset.setGeometry(QtCore.QRect(470, 310, 75, 23))
         self.reset.setObjectName("reset")
+        self.reset.clicked.connect(self.resetcheck)
         self.user = QtWidgets.QLineEdit(loginwindow)
         self.user.setGeometry(QtCore.QRect(380, 150, 151, 31))
         self.user.setObjectName("user")
-        self.pass = QtWidgets.QLineEdit(loginwindow)
-        self.pass.setGeometry(QtCore.QRect(380, 220, 151, 31))
-        self.pass.setObjectName("pass")
+        self.pass1= QtWidgets.QLineEdit(loginwindow)
+        self.pass1.setGeometry(QtCore.QRect(380, 220, 151, 31))
+        self.pass1.setObjectName("pass")
+        self.pass1.setEchoMode(QtWidgets.QLineEdit.Password )
 
         self.retranslateUi(loginwindow)
         QtCore.QMetaObject.connectSlotsByName(loginwindow)
 
     def retranslateUi(self, loginwindow):
         _translate = QtCore.QCoreApplication.translate
-        loginwindow.setWindowTitle(_translate("loginwindow", "Dialog"))
+        loginwindow.setWindowTitle(_translate("loginwindow", "Pymail"))
         self.title.setText(_translate("loginwindow", "E-MAIL LOGIN"))
         self.username.setText(_translate("loginwindow", "USERNAME"))
         self.password.setText(_translate("loginwindow", "PASSWORD"))
         self.login.setText(_translate("loginwindow", "OK"))
         self.reset.setText(_translate("loginwindow", "RESET"))
+
+
+
 
 
 if __name__ == "__main__":
