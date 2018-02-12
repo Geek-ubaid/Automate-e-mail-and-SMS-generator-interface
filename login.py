@@ -5,28 +5,29 @@
 # Created by: PyQt5 UI code generator 5.6
 #
 # WARNING! All changes made in this file will be lost!
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-import sys
-import smtplibaio
+from automater import *
 class Ui_loginwindow(object):
+    def showmessagebox(self,title,message):
+        msg=QtGui.QMessagebox()
+        msg.setIcon(QtGui.QMessagebox.warning)
+        msg.setWindowTitle(title)
+        msg.setText(message)
+        msg.setStandardButtons(QtGui.QMessagebox.OK)
+        msg.exec_()
     def logincheck(self):
         passget = self.pass1.text()
         userget=self.user.text()
-        server = smtplibaio.SMTP_SSL('smtp.gmail.com', 587)
-        server.ehlo()
-        server.starttls()
-        try:
-            server.login(userget, passget)
-        except:
-           print("error")
-           self.msg=QtWidgets.QMessageBox(loginwindow)
-           self.msg.setIcon(self,"critical")
-           self.msg.setText("Invalid Credentials")
-           self.msg.setWindowTitle("Error in Login")
-           self.msg.show()
+        if (userget != "" and passget != ""):
+            try:
+                print("Login")
+            except:
+                self.showmessagebox("Login Failed","Can`t connect to the network")
+        else:
+            self.showmessagebox("Error","Invalid Credentials")
 
-
+    def closit(self):
+        self.destroy()
 
     def resetcheck(self):
         self.pass1.setText("")
