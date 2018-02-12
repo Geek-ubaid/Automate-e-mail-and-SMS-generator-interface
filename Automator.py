@@ -8,30 +8,51 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import re
+import string
 
 class Ui_MainWindow(object):
-    def fileextract(self):
-        rec = self.recipients.text()
-        if (str(rec)[len(rec)-4::]==".txt"):
-
     def fileextractm(self):
-        recm=self.recipientsm.text()
-        if (str(rec)[len(rec)-4::]==".txt"):
-            file=open(recm,"r")
-            new=open("mail.txt","a+")
-            for i in file.readlines():
-                data=re.findall(r'[\w\.-]+@[\w\.-]+', i)
+        rec = self.recipientsm.text()
+        if (str(rec)[len(rec) - 4::] == ".txt"):
+            with open(rec,"r") as file:
+                for i in file.readlines():      #the csv format shoulf be like name regno phoneno emailaddress
+                    l=i.split(" ")
+                    self.dic1={}
+                    self.dic1[l[2]]=(l[0],l[1])
+            print("Recipients added")
+        else:
+            print("Wrong file type or no longer exist")
+
+    def fileextract(self):
+        recm=self.recipients.text()
+        if (str(recm)[len(recm)-4::]==".txt"):
+            with open(recm,"r") as file :
+                for i in file.readlines():
+                    l=i.split(" ")
+                    self.dic2={}
+                    self.dic[l[3]]=(l[0],l[1])
+            print("Recipients added")
+        else:
+            print("Wrong file type")
 
 
+    def sendmail(self):
+        self.msg=self.message.text()
+        print(self.msg)
+        for i in self.dic2.keys():
+            print(i)
+            self.msg=self.msg.replace("#studentname",self.dic2[i][0])
+            self.msg=self.msg.replace("#regno",self.dic2[i][1])
 
 
+    def sendmess(self):
+        self.msgm=self.messaget.text()
+        print(self.msgm)
+        for i in dic1.keys():
+            self.msgm=self.msgm.replace("#studentname",self.dic1[i][0])
+            self.msgm=self.msgm.replace("#regno",self.dic1[i][1])
+            print(self.msgm)
 
-
-    def sendemail(self):
-        msg=self.message.text()
-
-    def sendmessage(self):
-        msgm=self.messaget.text()
 
 
     def setupUi(self, MainWindow):
@@ -70,7 +91,7 @@ class Ui_MainWindow(object):
         self.send = QtWidgets.QPushButton(self.tab)
         self.send.setGeometry(QtCore.QRect(680, 550, 75, 23))
         self.send.setObjectName("send")
-        self.send.clicked.connect(sendemail)
+        self.send.clicked.connect(self.sendmail)
         self.extract = QtWidgets.QPushButton(self.tab)
         self.extract.setGeometry(QtCore.QRect(690, 30, 75, 23))
         self.extract.setObjectName("extract")
@@ -96,7 +117,7 @@ class Ui_MainWindow(object):
         self.sendm = QtWidgets.QPushButton(self.tab_2)
         self.sendm.setGeometry(QtCore.QRect(700, 280, 75, 23))
         self.sendm.setObjectName("sendm")
-        self.sendm.clicked.connect(sendmessage)
+        self.sendm.clicked.connect(self.sendmess)
         self.label_5 = QtWidgets.QLabel(self.tab_2)
         self.label_5.setGeometry(QtCore.QRect(100, 70, 111, 16))
         font = QtGui.QFont()
@@ -109,11 +130,10 @@ class Ui_MainWindow(object):
         self.recipientsm = QtWidgets.QLineEdit(self.tab_2)
         self.recipientsm.setGeometry(QtCore.QRect(290, 60, 231, 31))
         self.recipientsm.setObjectName("recipientsm")
-        recp=self.recipientsm.text()
         self.extractm = QtWidgets.QPushButton(self.tab_2)
         self.extractm.setGeometry(QtCore.QRect(600, 70, 75, 23))
         self.extractm.setObjectName("extractm")
-        self.extractm.clicked.connect(fileextractm)
+        self.extractm.clicked.connect(self.fileextractm)
         self.tabWidget.addTab(self.tab_2, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
