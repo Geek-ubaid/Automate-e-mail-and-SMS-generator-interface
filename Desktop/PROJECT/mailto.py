@@ -8,7 +8,7 @@ from sendgrid.helpers.mail import *
 
 
 def mail(sender,to,message,subject):
-    sg = sendgrid.SendGridAPIClient(apikey='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')
+    sg = sendgrid.SendGridAPIClient(apikey='Your API key')
     from_email = Email(sender)
     to_email = Email(to)
     content = Content("text/plain",message)
@@ -22,4 +22,4 @@ def mail(sender,to,message,subject):
     except:
         pass
 if __name__  == "__main__":
-    wmail("usmaniubaid@gmail.com","ubaid.usmani2017@vitstudent.ac.in","hello","test")
+    wmail("usmaniubaid@gmail.com","ubaid.usmani2017@vitstudent.ac.in","hello","test") #test conditions
