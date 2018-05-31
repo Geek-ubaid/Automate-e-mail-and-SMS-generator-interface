@@ -1,8 +1,8 @@
 def send_with_template(reciever,data,subject,sender):  #subject is optional
     import sendwithus
-    api = sendwithus.api(api_key='live_0b13ba36f466dceb99fa1134b1a208a12299b830')#sendwithus API key
+    api = sendwithus.api(api_key='sendwithus API key')
     r = api.send(
-    email_id='tem_wrMv7tQkY77WRJRxRP4Hc6gB',   #template ID
+    email_id='template ID',   
     recipient= {# give the reciever here
                 'address': reciever
               },
@@ -24,4 +24,4 @@ def send_with_template(reciever,data,subject,sender):  #subject is optional
      )
     print (r.status_code)   #response code
 if __name__=="__main__":
-    send_with_template("usmaniubaid@gmail.com",{"name":"Ubaid Usmani","regno":"17BCE0983"},"test","sdfsd")
+    send_with_template("usmaniubaid@gmail.com",{"name":"Ubaid Usmani","regno":"17BCE0983"},"test","sdfsd") "function example
