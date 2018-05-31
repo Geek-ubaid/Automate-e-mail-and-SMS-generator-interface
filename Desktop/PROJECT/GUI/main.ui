@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>981</width>
-    <height>629</height>
+    <width>998</width>
+    <height>662</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>1101</width>
-      <height>631</height>
+      <width>901</width>
+      <height>651</height>
      </rect>
     </property>
     <property name="font">
@@ -48,7 +48,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="rercipients_Email">
+     <widget class="QLineEdit" name="recipients_email">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -104,7 +104,7 @@
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>220</y>
+        <y>250</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -125,48 +125,58 @@
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>170</y>
-        <width>75</width>
-        <height>23</height>
+        <y>200</y>
+        <width>81</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
        <string>Attachment</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="send_Email">
+     <widget class="QPushButton" name="send_email">
       <property name="geometry">
        <rect>
-        <x>680</x>
-        <y>550</y>
-        <width>75</width>
-        <height>23</height>
+        <x>700</x>
+        <y>420</y>
+        <width>81</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
        <string>SEND </string>
       </property>
      </widget>
-     <widget class="QPushButton" name="extract_Email_recipients">
+     <widget class="QPushButton" name="extract_email_recipients">
       <property name="geometry">
        <rect>
         <x>690</x>
         <y>30</y>
-        <width>75</width>
-        <height>23</height>
+        <width>81</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
        <string>Extract</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="message_Email">
+     <widget class="QLineEdit" name="file">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>270</y>
-        <width>681</width>
-        <height>251</height>
+        <x>360</x>
+        <y>200</y>
+        <width>301</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="message_email">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>300</y>
+        <width>641</width>
+        <height>281</height>
        </rect>
       </property>
      </widget>
@@ -196,23 +206,13 @@
        <string>Your message</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="message_sms">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>250</y>
-        <width>571</width>
-        <height>251</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="send_sms">
+     <widget class="QPushButton" name="send_message">
       <property name="geometry">
        <rect>
         <x>700</x>
-        <y>280</y>
-        <width>75</width>
-        <height>23</height>
+        <y>350</y>
+        <width>81</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
@@ -222,7 +222,7 @@
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>90</x>
         <y>120</y>
         <width>111</width>
         <height>16</height>
@@ -240,23 +240,23 @@
        <string>Recipients</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="recipient_message">
+     <widget class="QLineEdit" name="recipient_number">
       <property name="geometry">
        <rect>
         <x>260</x>
         <y>110</y>
-        <width>231</width>
+        <width>331</width>
         <height>31</height>
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="extract_Message_recipients">
+     <widget class="QPushButton" name="extract_message_recipients">
       <property name="geometry">
        <rect>
-        <x>600</x>
+        <x>710</x>
         <y>110</y>
-        <width>75</width>
-        <height>23</height>
+        <width>81</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
@@ -284,13 +284,23 @@
        <string>From</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="users_number">
+     <widget class="QLineEdit" name="user_number">
       <property name="geometry">
        <rect>
         <x>260</x>
         <y>40</y>
-        <width>231</width>
+        <width>331</width>
         <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="message_text">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>240</y>
+        <width>511</width>
+        <height>271</height>
        </rect>
       </property>
      </widget>
