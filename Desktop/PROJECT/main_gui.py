@@ -18,7 +18,7 @@ class Loginwindow(QtWidgets.QDialog,Ui_loginwindow):
     def logincheck(self):
         passget = self.pass1.text()
         userget = self.user.text()
-        if (userget == "asd" and passget == "qwe"):
+        if (userget == "set username" and passget == "set password"):
             try:
                 self.window= Automater(self)
                 self.close()
@@ -155,9 +155,10 @@ class Automater(QtWidgets.QMainWindow,Ui_MainWindow):
         email = self.message_email.toPlainText()
         sub = self.subject.text()
         sender="gdgvit@vitstudent.ac.in"
+        #mail without html body, for using this uncomment it and comment the template email part
         '''for i in self.email_id.keys():
              temp = email
-             temp = temp.replace('#studentname', self.email_id[i][0])
+             temp = temp.replace('#studentname', self.email_id[i][0])  
              temp = temp.replace('#regno', self.email_id[i][1])
              try:
                  mailto.mail(sender,i,temp,sub)
@@ -165,6 +166,7 @@ class Automater(QtWidgets.QMainWindow,Ui_MainWindow):
              except:
                  print("Mail not send to",i)
         '''
+        #template email part
         for i in self.email_id.keys():
             data={"name":self.email_id[i][0],"regno":self.email_id[i][1])
             try:
