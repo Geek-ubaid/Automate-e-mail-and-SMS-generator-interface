@@ -9,6 +9,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_loginwindow(object):
+
+
     def setupUi(self, loginwindow):
         loginwindow.setObjectName("loginwindow")
         loginwindow.resize(802, 391)
@@ -51,6 +53,8 @@ class Ui_loginwindow(object):
         self.pass1 = QtWidgets.QLineEdit(loginwindow)
         self.pass1.setGeometry(QtCore.QRect(380, 220, 151, 31))
         self.pass1.setObjectName("pass1")
+        self.pass1.setEchoMode(QtWidgets.QLineEdit.Password)
+
 
         self.retranslateUi(loginwindow)
         QtCore.QMetaObject.connectSlotsByName(loginwindow)
@@ -63,6 +67,7 @@ class Ui_loginwindow(object):
         self.password.setText(_translate("loginwindow", "PASSWORD"))
         self.login.setText(_translate("loginwindow", "OK"))
         self.reset.setText(_translate("loginwindow", "RESET"))
+
 
 
 
